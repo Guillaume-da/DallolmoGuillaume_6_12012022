@@ -2,7 +2,6 @@
 function lightbox() {
 	const closeButton = document.querySelector('.close-button');
 	setTimeout(() => {
-		
 		const leftArrow = document.querySelector('.fa-angle-left');
 		const lightboxContainer = document.querySelector('.lightbox-container');
 		const newImg = document.querySelector('.lightbox-item-image');
@@ -24,7 +23,6 @@ function lightbox() {
 				// Add src attributes to image
 				newImg.setAttribute('src', `${e.target.src}`);
 				newImg.setAttribute('alt', `${e.target.title}`);
-				
 
 				// Insert title
 				title.innerHTML = e.target.title;

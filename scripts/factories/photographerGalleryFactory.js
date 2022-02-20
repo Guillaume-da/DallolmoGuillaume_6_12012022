@@ -4,21 +4,22 @@
 function photographerGalleryFactory(data) {
 	const { id, photographerId, title, image, video, likes } = data;
 	function getUserGalleryDOM() {
-		if (image) {
-			// eslint-disable-next-line no-inner-declarations
-			function imageLike() {
-				if(isLiked){
-					count = count - 1;
-					heartContainer.innerHTML = '';
-					heartContainer.innerHTML = `<span class="far fa-heart" role="button" title="Ajouter un like" aria-label="likes" tabindex="0"></span>${count}<span></<pan>`;
-					
-				} else {
-					count = count + 1;
-					heartContainer.innerHTML = '';
-					heartContainer.innerHTML = `<span class="fas fa-heart" role="button" title="Retirer votre like" aria-label="likes" tabindex="0"></span>${count}<span></<pan>`;
-				}
-				isLiked = !isLiked;
+		let count = likes;
+		let isLiked = false;
+		function imageLike(heartContainer) {
+			if(isLiked){
+				count = count - 1;
+				heartContainer.innerHTML = '';
+				heartContainer.innerHTML = `<span class="far fa-heart" role="button" title="Ajouter un like" aria-label="likes" tabindex="0"></span>${count}<span></<pan>`;
+				
+			} else {
+				count = count + 1;
+				heartContainer.innerHTML = '';
+				heartContainer.innerHTML = `<span class="fas fa-heart" role="button" title="Retirer votre like" aria-label="likes" tabindex="0"></span>${count}<span></<pan>`;
 			}
+			isLiked = !isLiked;
+		}
+		if (image) {
 			const imgContainer = document.createElement('figure');
 			imgContainer.classList.add('item-container');
 			const img = document.createElement('img');
@@ -49,35 +50,19 @@ function photographerGalleryFactory(data) {
 			heartContainer.appendChild(heartCounter);
 
 			// Image Heart counter
-			let count = likes;
-			let isLiked = false;
 			heartContainer.addEventListener('click', () => {
-				imageLike();
+				imageLike(heartContainer);
 			});
 
 			// Navigation witk keys
 			heartContainer.addEventListener('keydown', (e) => {
 				if(e.target.classList.contains('fa-heart') && e.code === 'Enter'){
-					imageLike();
+					imageLike(heartContainer);
 				}
 			});
 			lightbox();
 			return imgContainer;
 		} else if (video) {
-			// eslint-disable-next-line no-inner-declarations
-			function videoLike() {
-				if(isLiked){
-					count = count - 1;
-					heartContainer.innerHTML = '';
-					heartContainer.innerHTML = `<span class="far fa-heart" role="button" title="Ajouter un like à cette video" aria-label="likes"  tabindex="0"></span>${count}<span></<pan>`;
-					
-				} else {
-					count = count + 1;
-					heartContainer.innerHTML = '';
-					heartContainer.innerHTML = `<span class="fas fa-heart" role="button" title="Retirer votre like" aria-label="likes" tabindex="0"></span>${count}<span></<pan>`;
-				}
-				isLiked = !isLiked;
-			}
 			// Create videos
 			const videoContainer = document.createElement('div');
 			videoContainer.classList.add('item-container');
@@ -94,7 +79,7 @@ function photographerGalleryFactory(data) {
 			const heartCounter = document.createElement('span');
 			heartCounter.setAttribute('aria-label', `${likes} likes`);
 			heartCounter.textContent = likes;
-			heartContainer.innerHTML = '<span class="far fa-heart" title="Ajouter un like à cette video" role="button" aria-label="likes" tabindex="0"></span>';
+			heartContainer.innerHTML = '<span class="far fa-heart" title="Ajouter un like" role="button" aria-label="likes" tabindex="0"></span>';
 			vid.setAttribute('tabindex', '0');
 			vid.setAttribute('title',`${title}`);
 			vid.classList.add('gallery-img');
@@ -107,21 +92,18 @@ function photographerGalleryFactory(data) {
 			heartContainer.appendChild(heartCounter);
 
 			// Video Heart counter
-			let count = likes;
-			let isLiked = false;
 			heartContainer.addEventListener('click', () => {
-				videoLike();
+				imageLike(heartContainer);
 			});
 
 			// Navigation witk keys
 			heartContainer.addEventListener('keydown', (e) => {
 				if(e.target.classList.contains('fa-heart') && e.code === 'Enter'){
-					videoLike();
+					imageLike(heartContainer);
 				}
 			});
 			return videoContainer;
 		}		
 	}
 	return { id, photographerId, title, image, video, likes, getUserGalleryDOM};
-	
 }
