@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta name="description" content="" />
+  <title>Fisheye - Site web de photographes freelances</title>
+</head>
+
+<body>
+  <div class="loader-container"></div>
+  <header class="header">
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo du site Fisheye" aria-label="Revenir à la page d'accueil" /></a>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <!-- <button class="contact_button" type="button" onclick="displayModal()">Contactez-moi</button> -->
+    </div>
+    <div class="media-select">
+      <span>Trier par</span>
+      <div class="select-container">
+        <button class="dropdown-toggle" type="button" aria-haspopup="listbox" aria-controls="list">Popularité</button>
+        <div class="icon"><span class="fas fa-chevron-down"></span></div>
+        <ul class="dropdown-menu hidden" role="listbox" aria-expanded="false" id="list">
+          <li class="dropdown-menu-link" role="option" tabindex="0" >Popularité</li>
+          <li class="dropdown-menu-link" role="option" tabindex="0" >Date</li>
+          <li class="dropdown-menu-link" role="option" tabindex="0" >Titre</li>
+        </ul>
+      </div>
+    </div>
+    <div class="media-gallery">
+      <div class="gallery-loader"></div>
+    </div>
+  </main>
+  
+  <div class="lightbox-container">
+    <div class="lightbox">
+      <div class="left-arrow">
+        <span class="fa fa-angle-left" role="button" aria-label="Voir l'image précédente" tabindex="0" ></span>
+      </div>
+      <div class="lightbox-item-container">
+        <img src="/" class="lightbox-item-image" alt="" />
+        <video class="lightbox-item-video"></video>
+        <span class="lightbox-item-title"></span>
+      </div>
+      <div>
+        <div class="right-arrow">
+          <span class="fa fa-angle-right" role="button" aria-label="Voir l'image suivante" tabindex="0" ></span>
+        </div>
+        <img class="close-button" src="assets/icons/close-red.svg" alt="Fermer la fenêtre" aria-label="Fermer la fenêtre" tabindex="0">
+      </div>
+    </div>
+    </div>
+    <div id="contact_modal">
+      <div class="modal">
+        <header>
+          <div>
+            <h2>Contactez-moi</h2>
+            <span class="photographer-name"></span>
+         </div>
+          <img src="assets/icons/close.svg" class="modal-close-button" onclick="closeModal()" alt="Fermer la fenêtre" aria-label="Fermer la fenêtre" tabindex="0"/>
+        </header>
+        <form method="post" action="/" id="contact-form">
+          <div>
+            <label for="first-name-input" id="firstname-label">Prénom</label>
+            <input type="text" id="first-name-input" name="first-name-input" tabindex="0" aria-labelledby="firstname-label"  />
+            <span class="error hidden" id="firstname-error">Vous devez indiquer votre prénom</span>
+            <label for="last-name-input" id="lastname-label">Nom</label>
+            <input id="last-name-input" name="last-name-input" aria-labelledby="lastname-label" />
+            <span class="error hidden" id="lastname-error">Vous devez indiquer votre nom</span>
+            <label for="email-input" id="email-label">Email</label>
+            <input id="email-input" name="email-input" aria-labelledby="email-label"/>
+            <span class="error hidden" id="email-error">Vous devez indiquer votre email</span>
+            <label for="message" id="message-label">Votre message</label>
+            <textarea name="message" id="message" cols="30" rows="10" aria-labelledby="message-label"></textarea>
+            <span class="error hidden" id="message-error">Vous devez écrire un message</span>
+          </div>
+          <button class="form-contact-button" aria-label="Envoyer" type="submit" >Envoyer</button>
+        </form>
+        <div class="successfull-message-container">
+          <img src="assets/icons/close.svg" class="message-close-button" alt="Fermer la fenêtre" aria-label="Fermer la fenêtre" tabindex="0"/>
+          <span>Message envoyé !</span>
+        </div>
+      </div>
+    </div>
+  <script src="scripts/components/loading-logo.js"></script>
+  <script src="scripts/factories/photographerPageFactory.js"></script>
+  <script src="scripts/factories/photographerGalleryFactory.js"></script>
+  <script src="scripts/utils/lightbox.js"></script>
+  <script src="scripts/utils/custom-select.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
+</body>
+
+</html>
