@@ -19,7 +19,7 @@ function photographerGalleryFactory(data) {
 			isLiked = !isLiked;
 		}
 		if (image) {
-			const imgContainer = document.createElement('figure');
+			const imgContainer = document.createElement('article');
 			imgContainer.classList.add('item-container');
 			const img = document.createElement('img');
 			img.classList.add('gallery-img');
@@ -28,7 +28,7 @@ function photographerGalleryFactory(data) {
 			img.setAttribute('title',`${title}`);
 			img.setAttribute('tabindex', '0');
 			img.setAttribute('aria-label', `${title}`);
-			const descriptionContainer = document.createElement('figcaption');
+			const descriptionContainer = document.createElement('div');
 			descriptionContainer.classList.add('image-description');
 			const imageTitle = document.createElement('h2');
 			imageTitle.textContent = title;
@@ -63,11 +63,11 @@ function photographerGalleryFactory(data) {
 			return imgContainer;
 		} else if (video) {
 			// Create videos
-			const videoContainer = document.createElement('figure');
+			const videoContainer = document.createElement('article');
 			videoContainer.classList.add('item-container');
 			const vid = document.createElement('video');
 			vid.setAttribute('src', './assets/images/' + video);
-			const descriptionContainer = document.createElement('figcaption');
+			const descriptionContainer = document.createElement('div');
 			descriptionContainer.classList.add('image-description');
 			const imageTitle = document.createElement('h2');
 			imageTitle.textContent = title;
