@@ -93,6 +93,18 @@ button.addEventListener('click', ()=>{
 	}
 });
 
+// Close select with enter key on arrow
+const upIcon = document.querySelector('.fa-chevron-up');
+icon.addEventListener('keydown', (e)=>{
+	if(dropdown.style.display === 'block'){
+		if(e.code === 'Enter'){
+			dropdown.style.display = 'none';
+			icon.innerHTML = '<span class="fas fa-chevron-down"></span>';
+			dropdown.setAttribute('aria-expanded', false);
+		}	
+	}
+});
+
 // Open / close select by clicking on arrow
 icon.addEventListener('click', ()=> {
 	if(dropdown.style.display === 'block'){
@@ -105,7 +117,6 @@ icon.addEventListener('click', ()=> {
 		dropdown.setAttribute('aria-expanded', true);
 	}
 });
-
 
 // Close select with escape button
 button.addEventListener('keydown', (e)=>{

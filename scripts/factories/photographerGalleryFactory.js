@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-// Gallery images
 function photographerGalleryFactory(data) {
 	const { id, photographerId, title, image, video, likes } = data;
 	function getUserGalleryDOM() {

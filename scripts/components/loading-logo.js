@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 const loader = {
-	init: () => {
+	init: ()=> {
 		const container = document.querySelector('.loader-container');
 		const loader = document.createElement( 'div' );
 		loader.classList.add('loader');
@@ -10,7 +10,7 @@ const loader = {
 		container.appendChild(loader);
 		loader.appendChild(img);
 
-		setTimeout(function(){
+		setTimeout(()=>{
 			container.style.display = 'none';
 			img.style.display = 'none';
 		}
