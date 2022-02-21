@@ -47,18 +47,18 @@ function getSortedDatas() {
 
 		if (e.target.innerHTML == 'Titre') {
 			let newData = data.sort((a, b) => a.title.localeCompare(b.title));
-			getDatas(newData);
 			setLocalstorage(newData);
+			getDatas(newData);
 			return newData;
 		} else if (e.target.innerHTML == 'Date') {
 			let newData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-			getDatas(newData);
 			setLocalstorage(newData);
+			getDatas(newData);
 			return newData;
 		} else if (e.target.innerHTML == 'Popularité') {
 			let newData = data.sort((a, b) => b.likes - a.likes);
-			getDatas(newData);
 			setLocalstorage(newData);
+			getDatas(newData);
 			return newData;
 		} 
 	}
@@ -88,7 +88,7 @@ button.addEventListener('click', ()=>{
 		dropdown.style.display = 'none';
 	} else {
 		dropdown.style.display = 'block';
-		icon.innerHTML = '<span class="fas fa-chevron-up" tabindex="0"></span>';
+		icon.innerHTML = '<span class="fas fa-chevron-up"></span>';
 		dropdown.setAttribute('aria-expanded', true);
 	}
 });
@@ -127,6 +127,7 @@ button.addEventListener('keydown', (e)=>{
 	}
 });
 
+// Close select with escape button
 dropdown.addEventListener('keydown', (e)=>{
 	if(e.code === 'Escape'){
 		dropdown.style.display = 'none';

@@ -5,21 +5,11 @@ let photographerName = document.querySelector('.photographer-name');
 setTimeout(() => {
 	let photographer = localStorage.getItem('photographer');
 	photographer = JSON.parse(photographer);
+
+	// Insert photographer name in form html
 	photographerName.textContent = photographer.name;
 }
 , 2000);
-
-// Open contact modal
-setTimeout(() => {
-	const modalButton = document.querySelector('.modal-button');
-	modalButton.addEventListener('click', () => {
-		const modal = document.getElementById('contact_modal');
-		const formInput = document.getElementById('first-name-input');
-		modal.style.display = 'block';
-		formInput.focus();
-	});
-}
-, 1500);
 
 // Form validation
 document.getElementById('contact-form').addEventListener('click', (e) => {
@@ -75,6 +65,18 @@ document.getElementById('contact-form').addEventListener('click', (e) => {
 		console.log('Message: ', messageValue);
 	} 
 });
+
+// Open contact modal
+setTimeout(() => {
+	const modalButton = document.querySelector('.modal-button');
+	modalButton.addEventListener('click', () => {
+		const modal = document.getElementById('contact_modal');
+		const formInput = document.getElementById('first-name-input');
+		modal.style.display = 'block';
+		formInput.focus();
+	});
+}
+, 1500);
 
 // Close modal with enter key on img
 const modal = document.getElementById('contact_modal');

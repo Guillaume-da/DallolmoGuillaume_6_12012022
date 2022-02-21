@@ -63,11 +63,11 @@ function photographerGalleryFactory(data) {
 			return imgContainer;
 		} else if (video) {
 			// Create videos
-			const videoContainer = document.createElement('div');
+			const videoContainer = document.createElement('figure');
 			videoContainer.classList.add('item-container');
 			const vid = document.createElement('video');
 			vid.setAttribute('src', './assets/images/' + video);
-			const descriptionContainer = document.createElement('div');
+			const descriptionContainer = document.createElement('figcaption');
 			descriptionContainer.classList.add('image-description');
 			const imageTitle = document.createElement('h2');
 			imageTitle.textContent = title;
