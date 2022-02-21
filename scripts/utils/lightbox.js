@@ -26,6 +26,8 @@ function lightbox() {
 
 				// Insert title
 				title.innerHTML = e.target.title;
+
+				// Put focus on navigation for screen readers
 				leftArrow.focus();
 			} else if (image.tagName == 'VIDEO') {
 				
@@ -45,6 +47,8 @@ function lightbox() {
 				
 				// Insert title
 				title.innerHTML = e.target.title;
+
+				// Put focus on navigation for screen readers
 				leftArrow.focus();
 			}
 		}
@@ -112,7 +116,7 @@ function lightboxNavigation() {
 		let nextVid = data[imageIndex + direction].video;
 
 		// Insert new title image
-		let title = document.querySelector('.lightbox-item-title');
+		const title = document.querySelector('.lightbox-item-title');
 		title.innerHTML = data[imageIndex + direction].title;
 		
 		const img = document.querySelector('.lightbox-item-image');

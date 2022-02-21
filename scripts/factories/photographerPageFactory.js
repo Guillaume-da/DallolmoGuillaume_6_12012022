@@ -38,7 +38,6 @@ function photographerPageFactory(data) {
 		titleContainer.appendChild(description);
 		container.appendChild(button);
 		container.appendChild(img);
-		// getMedias();
 		main.appendChild(infoContainer);
 		infoContainer.appendChild(photographerPrice);
 		return container;

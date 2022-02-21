@@ -102,6 +102,7 @@ function photographerGalleryFactory(data) {
 					imageLike(heartContainer);
 				}
 			});
+			lightbox();
 			return videoContainer;
 		}		
 	}

@@ -24,7 +24,7 @@ function getSortedDatas() {
 		lightbox();
 
 		// Remove the loader
-		setTimeout(function () {
+		setTimeout(() => {
 			loader.style.display = 'none';
 		}, 1500);
 		return newData;
@@ -38,9 +38,9 @@ function getSortedDatas() {
 
 	// Set selection in localstorage
 	function getNewDatas(e) {
-		let dropdown = document.querySelector('.dropdown-menu');
-		let icon = document.querySelector('.icon');
-		let button = document.querySelector('.dropdown-toggle');
+		const dropdown = document.querySelector('.dropdown-menu');
+		const icon = document.querySelector('.icon');
+		const button = document.querySelector('.dropdown-toggle');
 		button.innerHTML = e.target.innerHTML;
 		dropdown.style.display = 'none';
 		icon.innerHTML = '<span class="fas fa-chevron-down"></span>';
@@ -64,14 +64,13 @@ function getSortedDatas() {
 	}
 
 	// Select an option by clicking
-	let links = document.querySelectorAll('.dropdown-menu-link');
+	const links = document.querySelectorAll('.dropdown-menu-link');
 	links.forEach((link) => {
 		link.addEventListener('click', (e) => {
 			getNewDatas(e);
 		});
 
 		// Select an option with Enter key
-		let modal = document.getElementById('contact_modal');
 		link.addEventListener('keydown', (e) => {
 			if(e.code === 'Enter'){
 				getNewDatas(e);
@@ -80,23 +79,47 @@ function getSortedDatas() {
 	});
 }
 
-// Open / Close select
-let button = document.querySelector('.dropdown-toggle');
-let dropdown = document.querySelector('.dropdown-menu');
-let icon = document.querySelector('.icon');
+// Open select
+const button = document.querySelector('.dropdown-toggle');
+const dropdown = document.querySelector('.dropdown-menu');
+const icon = document.querySelector('.icon');
 button.addEventListener('click', ()=>{
 	if(dropdown.style.display === 'block'){
 		dropdown.style.display = 'none';
 	} else {
 		dropdown.style.display = 'block';
-		icon.innerHTML = '<span class="fas fa-chevron-up"></span>';
+		icon.innerHTML = '<span class="fas fa-chevron-up" tabindex="0"></span>';
 		dropdown.setAttribute('aria-expanded', true);
 	}
 });
+
+// Open / close select by clicking on arrow
+icon.addEventListener('click', ()=> {
+	if(dropdown.style.display === 'block'){
+		dropdown.style.display = 'none';
+		icon.innerHTML = '<span class="fas fa-chevron-down"></span>';
+		dropdown.setAttribute('aria-expanded', false);
+	} else {
+		dropdown.style.display = 'block';
+		icon.innerHTML = '<span class="fas fa-chevron-up" tabindex="0"></span>';
+		dropdown.setAttribute('aria-expanded', true);
+	}
+});
+
 
 // Close select with escape button
 button.addEventListener('keydown', (e)=>{
 	if(e.code === 'Escape'){
 		dropdown.style.display = 'none';
+		icon.innerHTML = '<span class="fas fa-chevron-down"></span>';
+		dropdown.setAttribute('aria-expanded', false);
+	}
+});
+
+dropdown.addEventListener('keydown', (e)=>{
+	if(e.code === 'Escape'){
+		dropdown.style.display = 'none';
+		icon.innerHTML = '<span class="fas fa-chevron-down"></span>';
+		dropdown.setAttribute('aria-expanded', false);
 	}
 });

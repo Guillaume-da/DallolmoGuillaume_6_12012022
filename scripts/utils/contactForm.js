@@ -10,10 +10,9 @@ setTimeout(() => {
 , 2000);
 
 // Open contact modal
-setTimeout(function(){
+setTimeout(() => {
 	const modalButton = document.querySelector('.modal-button');
-	modalButton.addEventListener('click', function () {
-		// console.log('clic');
+	modalButton.addEventListener('click', () => {
 		const modal = document.getElementById('contact_modal');
 		const formInput = document.getElementById('first-name-input');
 		modal.style.display = 'block';
@@ -23,8 +22,10 @@ setTimeout(function(){
 , 1500);
 
 // Form validation
-document.getElementById('contact-form').addEventListener('click', function (e) {
+document.getElementById('contact-form').addEventListener('click', (e) => {
 	e.preventDefault();
+
+	// Firstname
 	const firstName = document.getElementById('first-name-input');
 	const firstNameValue = firstName.value;
 	const firstNameErrorMessage = document.getElementById('firstname-error');
@@ -34,6 +35,7 @@ document.getElementById('contact-form').addEventListener('click', function (e) {
 		firstNameErrorMessage.classList.add('hidden');
 	}
 
+	// Lastname
 	const lastName = document.getElementById('last-name-input');
 	const lastNameValue = lastName.value;
 	const lastNameErrorMessage = document.getElementById('lastname-error');
@@ -43,6 +45,7 @@ document.getElementById('contact-form').addEventListener('click', function (e) {
 		lastNameErrorMessage.classList.add('hidden');
 	}
 
+	// Email
 	const email = document.getElementById('email-input');
 	const emailValue = email.value;
 	const emailErrorMessage = document.getElementById('email-error');
@@ -52,6 +55,7 @@ document.getElementById('contact-form').addEventListener('click', function (e) {
 		emailErrorMessage.classList.add('hidden');
 	}
 
+	// Message
 	const message = document.getElementById('message');
 	const messageValue = message.value;
 	const messageErrorMessage = document.getElementById('message-error');
@@ -62,7 +66,7 @@ document.getElementById('contact-form').addEventListener('click', function (e) {
 	}
 	
 	if (firstNameValue.length > 0 && lastNameValue.length > 0 && emailValue.length > 0 && messageValue.length > 0) {
-		let message = document.querySelector('.successfull-message-container');
+		const message = document.querySelector('.successfull-message-container');
 		message.style.display = 'flex';
 		message.focus();
 		console.log('Prénom: ', firstNameValue);
@@ -72,39 +76,35 @@ document.getElementById('contact-form').addEventListener('click', function (e) {
 	} 
 });
 
-// Close contact modal
-function closeModal() {
-	const modal = document.getElementById('contact_modal');
-	modal.style.display = 'none';
-}
-
 // Close modal with enter key on img
-let modal = document.getElementById('contact_modal');
+const modal = document.getElementById('contact_modal');
 document.querySelector('.modal-close-button').addEventListener('keydown', (e) => {
 	if(e.code === 'Enter'){
 		modal.style.display = 'none';
 	}
 });
 
+// Close contact modal
+function closeModal() {
+	modal.style.display = 'none';
+}
+
 // Close modal with escape key
 document.addEventListener('keydown', (e) => {
 	if(e.code === 'Escape'){
-		let modal = document.getElementById('contact_modal');
 		modal.style.display = 'none';
 	}
 });
 
 // Close successfull message by clicking
-let closeButton = document.querySelector('.message-close-button');
-closeButton.addEventListener('click', function () {
-	let modal = document.getElementById('contact_modal');
+const closeButton = document.querySelector('.message-close-button');
+closeButton.addEventListener('click', () => {
 	modal.style.display = 'none';
 });
 
 // Close successfull message with enter key on img
 closeButton.addEventListener('keydown', (e) => {
 	if(e.code === 'Enter'){
-		let modal = document.getElementById('contact_modal');
 		modal.style.display = 'none';
 	}
 });

@@ -7,7 +7,6 @@ function photographerCardFactory(data) {
 		// Add link to image with ID in parameter
 		const photographerLink = document.createElement('a');
 		photographerLink.classList.add('photographer-link');
-		// eslint-disable-next-line no-undef
 		photographerLink.href = `./photographer.html?id=${id}`;
 		const imgContainer = document.createElement('div');
 		imgContainer.classList.add('article-header');

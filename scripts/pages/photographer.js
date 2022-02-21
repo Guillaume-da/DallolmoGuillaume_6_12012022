@@ -44,7 +44,6 @@ function displayTotalLikes() {
 
 // Get photographer images
 async function getMedias() {
-	console.log('appel API');
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	let actualId = urlParams.get('id');
