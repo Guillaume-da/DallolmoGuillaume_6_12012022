@@ -2,7 +2,7 @@
 function lightbox() {
 	const closeButton = document.querySelector('.close-button');
 	setTimeout(() => {
-		const leftArrow = document.querySelector('.fa-angle-left');
+		// const leftArrow = document.querySelector('.fa-angle-left');
 		const lightboxContainer = document.querySelector('.lightbox-container');
 		const newImg = document.querySelector('.lightbox-item-image');
 		const newVideo = document.querySelector('.lightbox-item-video');
@@ -23,12 +23,14 @@ function lightbox() {
 				// Add src attributes to image
 				newImg.setAttribute('src', `${e.target.src}`);
 				newImg.setAttribute('alt', `${e.target.title}`);
+				newImg.setAttribute('tabindex', '0');
+				newImg.setAttribute('aria-label', `${e.target.title}`);
 
 				// Insert title
 				title.innerHTML = e.target.title;
 
 				// Put focus on navigation for screen readers
-				leftArrow.focus();
+				newImg.focus();
 			} else if (image.tagName == 'VIDEO') {
 				
 				// Display lightbox
@@ -42,14 +44,16 @@ function lightbox() {
 
 				// Or Add src attributes to video
 				newVideo.setAttribute('src', `${e.target.src}`);
-				newVideo.setAttribute('controls', 'controls');
+				newVideo.setAttribute('autoplay', 'true');
 				newVideo.setAttribute('title', `${e.target.title}`);
+				newVideo.setAttribute('tabindex', '0');
+				newVideo.setAttribute('aria-label', `${e.target.title}`);
 				
 				// Insert title
 				title.innerHTML = e.target.title;
 
 				// Put focus on navigation for screen readers
-				leftArrow.focus();
+				newVideo.focus();
 			}
 		}
 		images.forEach((image) => {
@@ -132,6 +136,9 @@ function lightboxNavigation() {
 			// Set src to image
 			img.src = './assets/images/' + nextImg;
 			img.setAttribute('alt', data[imageIndex + direction].title);
+			img.setAttribute('tabindex', '0');
+			img.setAttribute('aria-label', data[imageIndex + direction].title);
+			img.focus();
 
 		} else {
 			let nextVid = data[imageIndex + direction].video;
@@ -142,8 +149,11 @@ function lightboxNavigation() {
 
 			// Set src to video
 			video.src = './assets/images/' + nextVid;
-			video.setAttribute('controls', 'controls');
+			video.setAttribute('autoplay', 'true');
 			video.setAttribute('title', data[imageIndex + direction].title);
+			video.setAttribute('tabindex', '0');
+			video.setAttribute('aria-label', data[imageIndex + direction].title);
+			video.focus();
 		}
 	}
 
@@ -161,7 +171,7 @@ function lightboxNavigation() {
 		navigation(rightDirection);
 	});
 
-	// Navigation witk keys
+	// Navigation with arrow keys
 	document.addEventListener('keydown', (e) => {
 		if(e.code === 'ArrowRight'){
 			const leftDirection = +1;
