@@ -5,15 +5,13 @@ function getSortedDatas() {
 	let data = localStorage.getItem('sortedResult');
 	data = JSON.parse(data);
 
-	function getDatas(sort) {
+	function getDatas() {
 		const gallery = document.querySelectorAll('.item-container');
 		const loader = document.querySelector('.gallery-loader');
 
 		// Display loader
 		loader.style.display = 'block';
-
-		// Sort datas from parameter
-		let newData = sort;
+		
 		// Remove existing gallery
 		gallery.forEach((e) => e.remove());
 
@@ -27,7 +25,6 @@ function getSortedDatas() {
 		setTimeout(() => {
 			loader.style.display = 'none';
 		}, 1500);
-		return newData;
 	}
 
 	// Set localstorage
@@ -48,17 +45,17 @@ function getSortedDatas() {
 		if (e.target.innerHTML == 'Titre') {
 			let newData = data.sort((a, b) => a.title.localeCompare(b.title));
 			setLocalstorage(newData);
-			getDatas(newData);
+			getDatas();
 			return newData;
 		} else if (e.target.innerHTML == 'Date') {
 			let newData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
 			setLocalstorage(newData);
-			getDatas(newData);
+			getDatas();
 			return newData;
 		} else if (e.target.innerHTML == 'Popularité') {
 			let newData = data.sort((a, b) => b.likes - a.likes);
 			setLocalstorage(newData);
-			getDatas(newData);
+			getDatas();
 			return newData;
 		} 
 	}
