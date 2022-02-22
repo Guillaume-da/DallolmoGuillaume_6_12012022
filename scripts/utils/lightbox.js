@@ -174,8 +174,8 @@ function lightboxNavigation() {
 	// Navigation with arrow keys
 	document.addEventListener('keydown', (e) => {
 		if(e.code === 'ArrowRight'){
-			const leftDirection = +1;
-			navigation(leftDirection);
+			const rightDirection = +1;
+			navigation(rightDirection);
 		}
 		if(e.code === 'ArrowLeft'){
 			const leftDirection = -1;
