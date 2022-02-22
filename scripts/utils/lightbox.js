@@ -203,11 +203,11 @@ function lightboxNavigation() {
 
 	// Hide lightbox when selecting close button with tab and enter key
 	const closeButton = document.querySelector('.close-button');
-	const item = document.querySelector('.gallery-img');
+	const img = document.querySelector('.gallery-img');
 	closeButton.addEventListener('keydown', (e) => {
 		if(e.code === 'Enter'){
 			lightboxContainer.style.display = 'none';
-			item.focus();
+			img.focus();
 		}
 	});
 }
